@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+
+
+{% block right %}
+<div class="container-fluid" style="margin-top: 30px;">
+				<h5 class="bread-crumb"><strong>Secutiry Log</strong></h5>
+				<table class="table text-left">
+					<thead>
+						<tr>
+							<th class="col-md-2">Login Date</th>
+							<th class="col-md-2">Login IP</th>
+							<th class="col-md-4">Login Agent</th>
+							<th class="col-md-2"><input type="checkbox" id="check_all" onclick="seltAll();"/><a href="/user/del/" onclick="deleSeltedRecords();">Delete</a></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for i in data %}
+						<tr>
+							<td class="col-md-2">{{ i.login_date }}</td>
+							<td class="col-md-2">{{ i.login_ip }}</td>
+							<td class="col-md-4">{{ i.login_agent }}</td>
+							<td class="col-md-2"><input type="checkbox" name="check_list" value="{{ i.id }}" /></td>
+						</tr>
+					{% endfor %}
+					</tbody>
+					
+					<tfoot>
+						<tr>
+							<td colspan="10">
+							<ul class="pagination pull-right">
+								{% for i in page %}
+								<li>{{ i }}</li>
+								{% endfor %}			
+							</ul>
+							<p class="tfoot-info">共 <span class="text-success">{{ count }}</span> 条数据</p>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">  
+    function seltAll(){  
+        var chckBoxSign = document.getElementById("check_all");       //ckb 全选/反选的选择框id  
+        var chckBox = document.getElementsByName("check_list");    //所有的选择框其那么都是chckBox  
+        var num = chckBox.length;  
+        if(chckBoxSign.checked){  
+            for(var index =0 ; index<num ; index++){  
+                chckBox[index].checked = true;  
+                }  
+        }else{  
+            for(var index =0 ; index<num ; index++){  
+                chckBox[index].checked = false;  
+                }  
+            }  
+        }  
+  
+    function deleSeltedRecords(){  
+        var chckBox = document.getElementsByName("check_list");  
+        var num = chckBox.length;  
+        var ids = "";  
+        for(var index =0 ; index<num ; index++){  
+            if(chckBox[index].checked){  
+                ids += chckBox[index].value + ",";                
+            }  
+        }  
+        if(ids!=""){  
+            if(window.confirm("确定删除所选记录？")){  
+                $.ajax({   
+                    url : '/user/del/' ,
+                    type : 'GET',  
+                    data : {id:ids},  
+                    success : function(arg) {  
+                        alert("删除成功");  
+                        window.location.href = "channel-no.action" ;  
+                    },  
+                    error : function(arg) {  
+                        alert("系统错误，删除失败");  
+                    }  
+                });  
+            }  
+        }else{  
+            alert("请选择要删除的记录");  
+            }  
+        }  
+</script>
+{% endblock %}
+

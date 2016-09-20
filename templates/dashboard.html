@@ -1,0 +1,223 @@
+{% extends "index.html" %}
+{% block header %}
+<script src="/static/js/echarts.simple.min.js"></script>
+{% endblock %}
+
+{% block right %}
+<div class="container-fluid" style="margin-top: 50px;">
+	<div class="row">
+		<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12">
+							<div class="row">
+								<h5 class="bread-crumb"><strong>Target Of This Test</strong>
+								<div class="absolute-right"><a href="{% url 'risk_add' %}">New Monitoring  <span class="glyphicon glyphicon-tasks"></span></a></div>
+								</h5>
+							</div>
+							<div class="row text-center">
+								<p>total:sfbest.com</p>
+								<p>start:2015-10-13 domain task</p>
+							</div>
+							<div class="row">
+								<div class="col-md-4 text-center">
+									<p><h1 class="text-danger">90</h1></p>
+									<p>risk to as up,more dangerous</p>
+								</div>
+								<div class="col-md-2">
+									<p style="margin-top: 10px;margin-bottom: -80px"><canvas id="canvas1"></canvas></p>
+									<p style="margin-left: 5px;" class=" text-center">High</p>
+								</div>
+								<div class="col-md-2">
+									<p style="margin-top: 10px;margin-bottom: -80px"><canvas id="canvas2"></canvas></p>
+									<p style="margin-left: 5px;" class=" text-center">Medium</p>
+								</div>
+								<div class="col-md-2">
+									<p style="margin-top: 10px;margin-bottom: -80px"><canvas id="canvas3"></canvas></p>
+									<p style="margin-left: 5px;" class=" text-center">Low</p>
+								</div>
+								<div class="col-md-2">
+									<p style="margin-top: 10px;margin-bottom: -80px"><canvas id="canvas4"></canvas></p>
+									<p style="margin-left: 5px;" class=" text-center">Notice</p>
+								</div>
+							</div>
+					</div>
+		</div>
+
+		<hr style="color: gray;border: solid 1px;"/>
+		<div class="row">
+						<div class="col-md-2 text-center">
+							<p>Basis Asset</p>
+							<p>
+								<div class="col-md-1 ">DM</br><span class="text-success">52</span></div>
+								<div class="col-md-1 ">IP</br><span class="text-success">52</span></div>
+							</p>
+							<p class="label label-success">finish</p>
+						</div>
+						<div class="col-md-2 text-center">
+							<p>Finger Check</p>
+							<p class="text-center">
+								<div class="col-md-1 ">cms</br><span class="text-success">52</span></div>
+								<div class="col-md-1 ">hit</br><span class="text-success">52</span></div>
+							</p>
+							<p class="label label-success">finish</p>
+						</div>
+						<div class="col-md-2 text-center">
+							<p>Plugins Check</p>
+							<p>
+								<div class="col-md-1 ">poc</br><span class="text-success">52</span></div>
+								<div class="col-md-1 ">hit</br><span class="text-success">52</span></div>
+							</p>
+							<p class="label label-success">finish</p>
+						</div>
+						<div class="col-md-2 text-center">
+							<p>Spider</p>
+							<p>URL</br><span class="text-success">52</span>
+							</p>
+							<p class="label label-success">finish</p>
+						</div>
+						<div class="col-md-2 text-center">
+							<p>Web Leaks</p>
+							<p>
+								<div class="col-md-1 ">task</br><span class="text-success">52</span></div>
+								<div class="col-md-1 ">leak</br><span class="text-success">52</span></div>
+							</p>
+							<p class="label label-success">finish</p>
+						</div>
+					</div>
+		</div>
+		<div class="col-md-4">
+						<div>Valnerability distribution</div>
+						<div id="riskdistribution" style="width: 200px;height: 200px;"></div>			
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+var mychart = echarts.init(document.getElementById('riskdistribution'));
+var option = {
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true, 
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'center',
+                        max: 1548
+                    }
+                }
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : ['50%', '70%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : true,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '12',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'},
+                {value:135, name:'视频广告'},
+                {value:1548, name:'搜索引擎'}
+            ]
+        }
+    ]
+};
+                    
+mychart.setOption(option);
+//--------------------------
+var canvas=document.getElementById("canvas1");
+var cxt=canvas.getContext("2d");
+//画一个空心圆
+cxt.beginPath();
+cxt.arc(33,33,30,0,360,false);
+cxt.lineWidth=5;
+cxt.strokeStyle="red";
+cxt.font = 'bold 12px arial';
+cxt.fillStyle = 'black center';
+cxt.fillText('23',(60/2-5),40);
+//cxt.strokeText('asdfsadf',50,50);
+cxt.stroke();//画空心圆
+cxt.closePath();
+
+var canvas=document.getElementById("canvas2");
+var cxt=canvas.getContext("2d");
+//画一个空心圆
+cxt.beginPath();
+cxt.arc(33,33,30,0,360,false);
+cxt.lineWidth=5;
+cxt.font = 'bold 12px arial';
+cxt.fillStyle = 'black center';
+cxt.fillText('10',(60/2-5),40);
+cxt.strokeStyle="orange";
+cxt.stroke();//画空心圆
+cxt.closePath();
+
+var canvas=document.getElementById("canvas3");
+var cxt=canvas.getContext("2d");
+//画一个空心圆
+cxt.beginPath();
+cxt.arc(33,33,30,0,360,false);
+cxt.lineWidth=5;
+cxt.font = 'bold 12px arial';
+cxt.fillStyle = 'black center';
+cxt.fillText('40',(60/2-5),40);
+cxt.strokeStyle="green";
+cxt.stroke();//画空心圆
+cxt.closePath();
+
+var canvas=document.getElementById("canvas4");
+var cxt=canvas.getContext("2d");
+//画一个空心圆
+cxt.beginPath();
+cxt.arc(33,33,30,0,360,false);
+cxt.lineWidth=5;
+cxt.font = 'bold 12px arial';
+cxt.fillStyle = 'black center';
+cxt.fillText('25',(60/2-5),40);
+cxt.strokeStyle="gray";
+cxt.stroke();//画空心圆
+cxt.closePath();
+</script>
+{% endblock %}
+

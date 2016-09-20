@@ -1,0 +1,44 @@
+
+<!--login-->
+<div id='Loginform' style="margin-top: 100px;margin-left: 250px;margin-right: 250px;margin-bottom: 300px;">
+	<div class="panel panel panel-info">
+			<div class="panel-heading">
+	      		<h3 class="panel-title"><img src="/static/img/logo.png" class="img-responsive" style="margin: auto;"/></h3>
+	   		</div>
+	   		
+	   		<div class="panel-body">
+				<form action="" method="POST" class="form col-md-12 center-block">
+					{{ csrf_token }}
+					<div>
+						<h6>username:</h6>
+						{{ dataL.username }}
+					</div>
+					
+					<div>
+						<h6>password:</h6>
+						{{ dataL.password }}
+					</div>
+									
+					
+					<div class="text-center">
+						</br>
+						<button type="submit" class="btn  btn-lg" style="background-color: #d9edf7;color: #337ab7; ">Login</button></br>
+					</div>
+					
+					<div class="row">
+						<div class="pull-left">
+							<a href="#">Need help?</a>
+						</div>
+						<div class="pull-right">
+							<a href="{% url 'register' %}">register</a>
+						</div>
+					</div>
+					
+					<div class="text-left">
+						<label style="color: red">{{ errorL }}</label>
+					</div>
+				</form>
+			</div>
+	</div>
+</div>
+<!--navigation-->  

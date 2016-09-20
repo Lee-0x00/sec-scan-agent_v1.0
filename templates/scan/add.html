@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+
+{% block right %}
+<div class="container-fluid" style="margin-top: 30px;">
+	<div class="row"><h5 class="bread-crumb"><strong>Configure host to scan</strong></h5></div>
+	<div class="panel panel panel-info">
+		<div class="panel-heading">
+      		<h3 class="panel-title">this</h3>
+   		</div>
+   		
+   		<div class="panel-body">
+			<form action="" method="POST" class="form-horizontal center-block">
+				{{ csrf_token }}
+				<div>
+					<h6>host list:</h6>
+					{{ data.hostname }}
+				</div>
+				
+				<div>
+					<h6>scan models:</h6>
+					{{ data.scanmodel }}
+				</div>
+				
+				<div>
+					<h6>scan plugins:</h6>
+					{{ data.plugin }}
+				</div>
+				
+				<div class="text-center">
+				</br>
+					<button type="submit" class="btn btn-primary btn-m">Sumbit</button>
+				</div>
+				<div class="text-left">
+					<label style="color: red">{{ errorS }}</label>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+

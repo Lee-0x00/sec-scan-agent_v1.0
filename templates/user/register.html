@@ -1,0 +1,55 @@
+
+<!--login-->
+<div id='Loginform' style="margin-top: 50px;margin-left: 250px;margin-right: 250px;margin-bottom: 300px;">
+	<div class="panel panel panel-info">
+			<div class="panel-heading">
+	      		<h3 class="panel-title"><img src="/static/img/logo.png" class="img-responsive" style="margin: auto;"/></h3>
+	   		</div>
+	   		
+	   		<div class="panel-body">
+				<form action="#" method="POST" class="form col-md-12 center-block">
+					{{ csrf_token }}
+					<div>
+						<h6>username:</h6>
+						{{ dataR.username }}
+					</div>
+					
+					<div>
+						<h6>password:</h6>
+						{{ dataR.password }}
+					</div>
+					
+					<div>
+						<h6>re-enter password:</h6>
+						{{ dataR.password1 }}
+					</div>
+
+					<div>
+						<h6>email:</h6>
+						{{ dataR.email }}
+					</div>
+					
+					<div>
+						<h6>phone number:</h6>
+						{{ dataR.phone }}
+					</div>						
+					
+					<div class="text-center">
+						</br>
+						<button type="submit" class="btn  btn-lg" style="background-color: #d9edf7;color: #337ab7; ">Register</button></br>
+					</div>
+					
+					<div>
+						<div class="text-right">
+							<a href="{% url 'login' %}">return to login</a>
+						</div>
+					</div>
+					
+					<div class="text-left">
+						<label style="color: red">{{ errorR }}</label>
+					</div>
+				</form>
+			</div>
+	</div>
+</div>
+<!--navigation-->  

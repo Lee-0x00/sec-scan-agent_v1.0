@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+
+{% block right %}
+<div class="container-fluid" style="margin-top: 30px;">
+	<div class="row"><h5 class="bread-crumb"><strong>Scan engine</strong></h5></div>
+	<div class="row">
+		<div class="pull-left"><a class="btn btn-sm btn-primary" href="{% url 'risk_add' %}">add host</a>&nbsp;&nbsp;</div>
+		<div class="pull-left"><a class="btn btn-sm btn-default" href="{% url 'risk_add' %}">del host</a></div>
+		<div class="pull-right"><a href="#">  <span class="glyphicon glyphicon-tasks"></span></a></div>
+		<table class="table text-left">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="check_all" onclick="seltAll();"/></th>
+					<th >domain</th>
+					<th>ip</th>
+					<th>port</th>
+					<th>server</th>
+					<th>http finger</th>
+					<th>cms</th>
+					<th>start</th>
+					<th>status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" name="check_list" value="{{ i.id }}" /></td>
+				</tr>
+			</tbody>
+			
+			<tfoot>
+				<tr>
+					<td colspan="10">
+					<ul class="pagination pull-right">
+						{% for i in page %}
+						<li>{{ i }}</li>
+						{% endfor %}			
+					</ul>
+					<p class="tfoot-info">共 <span class="text-success">{{ count }}</span> 条数据</p>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+

@@ -1,0 +1,232 @@
+<html>
+<head>
+{% include "header.html" %}
+{% block header %}
+{% endblock %}
+<style>
+	body,td,th {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px;color: #1d1007; line-height:24px} 
+</style>
+</head>
+<body>
+<div id="header">
+	<div class="navbar-wrapper">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container">
+		            <div class="navbar-header">
+		              <a href="#" class="navbar-brand">Focus Security</a>
+		            </div>
+		            <div class="navbar-right">
+		              <ul class="nav navbar-nav">
+					        <li class="dropdown">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <span class="glyphicon glyphicon-envelope"></span>  <span class="glyphicon glyphicon-chevron-down"></span>
+			                    </a>
+			                    <ul class="dropdown-menu dropdown-messages">
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <strong>John Smith</strong>
+			                                    <span class="pull-right text-muted">
+			                                        <em>Yesterday</em>
+			                                    </span>
+			                                </div>
+			                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <strong>John Smith</strong>
+			                                    <span class="pull-right text-muted">
+			                                        <em>Yesterday</em>
+			                                    </span>
+			                                </div>
+			                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a class="text-center" href="#">
+			                                <strong>Read All Messages</strong>
+			                                <i class="fa fa-angle-right"></i>
+			                            </a>
+			                        </li>
+			                    </ul>
+			                    <!-- /.dropdown-messages -->
+			                </li>
+			               
+							<li class="dropdown">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <span class="glyphicon glyphicon-bell"></span>  <span class="glyphicon glyphicon-chevron-down"></span>
+			                    </a>
+			                    <ul class="dropdown-menu dropdown-alerts">
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <i class="glyphicon glyphicon-comment"></i> New Comment
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <i class="glyphicon glyphicon-send"></i> New Alert
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+			                    </ul>
+			                    <!-- /.dropdown-alerts -->
+			                </li>             
+			                
+					        <li class="dropdown">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <span class="glyphicon glyphicon-user"></span> {{ name }}
+			                    </a>
+			                    <ul class="dropdown-menu dropdown-user">
+			                        <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> User Profile</a>
+			                        </li>
+			                        <li><a href="{% url 'modify' %}"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+			                        </li>
+			                        <li><a href="{% url 'log' 1 %}"><span class="glyphicon glyphicon-eye-open"></span> Log</a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+			                        </li>
+			                    </ul>
+			                    <!-- /.dropdown-user -->
+			               </li>
+		              </ul>
+		            </div>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="wrapper col-md-12" >
+<div id="left" style="margin-top: 50px;margin-left: 0px;margin-right: 0px;" class="col-md-2">
+	<div class="row" style="background-color:#fff;height: 100%;border-right: 2px solid #e7e7e7;">
+		<ul class="nav">
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="{% url 'index' %}" data-target="#dashborad" style="border-bottom: 1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-dashboard"></span>  Dashborad</a>
+            </li>
+            
+
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="#" data-target="#asset" style="border-bottom: 1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-list-alt"></span>  Asset Management</a>
+            </li>
+            <li>
+                <ul class="nav nav-second-level collapse" id="asset">
+                    <li>
+						<a href="#">Domain Information</a>
+                    </li>
+                    <li>
+                        <a href="#">IP Information</a>
+                    </li>
+                    <li>
+						<a href="#">Server Information</a>
+                    </li>
+                    <li>
+                        <a href="#">WebSite Information</a>
+                    </li>
+                    <li>
+						<a href="#">Application Information</a>
+                    </li>
+                    <li>
+                        <a href="#">Asset Trend</a>
+                    </li>
+                </ul>
+            </li>
+            
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="#" data-target="#task" style="border-bottom: 1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-tasks"></span>  Risk Monitor</a>
+            </li>
+            <li>
+                <ul class="nav nav-second-level collapse" id="task">
+                    <li>
+						<a href="{% url 'risk_add' %}">Append Machine</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'risk' %}">Monitor List</a>
+                    </li>
+                    <li>
+                        <a href="#">Monitor Setting</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="#" data-target="#poc" style="border-bottom: 1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-refresh"></span>  POC LIB</a>
+            </li>
+            <li>
+                <ul class="nav nav-second-level collapse" id="poc">
+                    <li>
+                        <a href="#">Add Plugins</a>
+                    </li>
+                </ul>
+            </li>
+ 
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="#" data-target="#attack" style="border-bottom:1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-fire"></span>  Burst Attack</a>
+            </li>
+            <li>
+                <ul class="nav nav-second-level collapse" id="attack">
+                    <li>
+						<a href="#">dict</a>
+                    </li>
+                    <li>
+                        <a href="#">Morris.js Charts</a>
+                    </li>
+                </ul>
+            </li>
+            
+			<li class="text-left">
+				<a class="dropdown-toggle" data-toggle="collapse" href="#" data-target="#dict" style="border-bottom: 1px solid #e7e7e7;">
+				<span class="glyphicon glyphicon-adjust"></span>  Dict Lib</a>
+            </li>
+            <li>
+                <ul class="nav nav-second-level collapse" id="dict">
+                    <li>
+						<a href="#">Add Dict</a>
+                    </li>
+                    <li>
+                        <a href="#">Morris.js Charts</a>
+                    </li>
+                </ul>
+            </li>
+            
+		</ul>
+	</div>
+</div>
+
+<div id="content" style="margin-top: 50px;margin-left: 0px;margin-right: 0px;" class="col-md-10">
+	{% block right %}
+			
+	{% endblock %}
+
+</div>
+</div>
+
+<script src="/static/js/jquery.min.js"></script>   
+<script src="/static/js/bootstrap.min.js"></script>
+{% block footer %}
+
+{% endblock %}
+</body>
+</html>
+
+
+
+
+

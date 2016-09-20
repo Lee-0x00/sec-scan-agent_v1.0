@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+
+{% block right %}
+<div class="row" id="userdetail">
+	<div class="container-fluid col-md-5" style="margin-top: 30px;">
+		<h5 class="bread-crumb"><strong>Modify Personal Information</strong></h5>
+		<form action="" method="POST" class="form center-block">
+			{{ csrf_token }}
+			<div>
+				<h6>Old Password:</h6>
+				{{ dataM.pwd }}
+			</div>
+			
+			<div>
+				<h6>New Password:</h6>
+				{{ dataM.password }}
+			</div>
+
+			<div>
+				<h6>New Password:</h6>
+				{{ dataM.password1 }}
+			</div>
+
+			<div>
+				<h6>Email:</h6>
+				{{ dataM.email }}
+			</div>
+			
+			<div class="text-center">
+			</br>
+				<button type="submit" class="btn btn-primary btn-m">Sumbit</button>
+			</div>
+			<div class="text-left">
+				<label style="color: red">{{ errorM }}</label>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

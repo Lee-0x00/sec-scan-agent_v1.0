@@ -1,0 +1,31 @@
+.tfoot-info {
+	float:left;
+	height:31px;
+	line-height:31px;
+	margin-top:12px;
+}
+
+
+.bread-crumb {
+	height: 30px;
+	line-height: 30px;
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
+
+.bread-crumb strong {
+	font-size: 16px;
+	font-weight:normal;
+	border-left: 2px solid #2bab69;
+	padding: 4px;
+}
+
+.absolute-right {
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+a {
+	text-decoration:none;
+}
