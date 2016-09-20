@@ -8,6 +8,7 @@ Coming soon
 
 for example:
 ![vulnerability]("https://github.com/Canbing007/Bing_Scan/blob/master/screenshot/domain_vulnerability.png")
+![vulnerability](https://github.com/Canbing007/Bing_Scan/blob/master/screenshot/domain_vulnerability.png)
 
 [scan_config](https://github.com/Canbing007/Bing_Scan/blob/master/screenshot/scan_configure.png)
 
